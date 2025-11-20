@@ -1,4 +1,4 @@
-package de.seuhd.campuscoffee.domain.impl;
+package de.seuhd.campuscoffee.data.impl;
 
 import de.seuhd.campuscoffee.domain.exceptions.DuplicatePosNameException;
 import de.seuhd.campuscoffee.domain.exceptions.OsmNodeMissingFieldsException;
@@ -48,7 +48,14 @@ public class PosServiceImpl implements PosService {
         return posDataService.getById(id);
     }
 
-    // TODO: Implement getByName after adding it to the PosService interface. Note that the PosDataService already supports filtering by name.
+    @Override
+    public @NonNull Pos getByName(@NonNull String name) throws PosNotFoundException {
+        log.debug("Retrieving POS with name: {}", name);
+        return posDataService.getByName(name);
+    }
+
+
+// TODO: Implement getByName after adding it to the PosService interface. Note that the PosDataService already supports filtering by name.
 
     @Override
     public @NonNull Pos upsert(@NonNull Pos pos) throws PosNotFoundException {
